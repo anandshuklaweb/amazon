@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React from "react";
-import Currency from "react-currency-formatter";
 import { useDispatch } from "react-redux";
 import { addToBasket, removeFromBasket } from "../slices/basketSlice";
 
@@ -38,8 +37,7 @@ const CheckoutProduct = ({
 
       <div className="col-span-3 mx-5">
         <p className="font-semibold">{title}</p>
-        <p className="text-xs my-2 line-clamp-3">{description}</p>
-        <Currency quantity={price} currency="INR" />
+        <p className="text-xs my-2 line-clamp-3">{description}</p>₹ {price}
       </div>
 
       <div className="flex flex-col space-y-2 my-auto justify-self-end">
