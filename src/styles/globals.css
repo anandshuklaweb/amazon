@@ -17,3 +17,9 @@
   height: 300px;
   margin: 0 auto;
 }
+
+.cart-img {
+  object-fit: contain;
+  height: 120px;
+  margin: 0 auto;
+}

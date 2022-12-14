@@ -6,10 +6,15 @@ import {
   ShoppingCartIcon,
 } from "@heroicons/react/outline";
 import { useSession, signIn, signOut } from "next-auth/react";
+import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import { selectItems } from "../slices/basketSlice";
 
 const Header = () => {
   const { data: session } = useSession();
-  // const [session] = useSession();
+  const router = useRouter();
+
+  const items = useSelector(selectItems);
 
   return (
     <header>
@@ -18,6 +23,7 @@ const Header = () => {
         <div className="flex mt-2 mx-4 item-center flex-grow sm:flex-grow-0">
           <Image
             src="/amazon-logo.png"
+            onClick={() => router.push("/")}
             width={120}
             height={40}
             alt=""
@@ -45,9 +51,12 @@ const Header = () => {
             <p>Returns</p>
             <p className="font-extrabold md:text-sm">& Orders</p>
           </div>
-          <div className="link relative flex items-center">
+          <div
+            onClick={() => router.push("/checkout")}
+            className="link relative flex items-center"
+          >
             <span className="absolute top-0 right-0 md:right-7 h-4 w-4 bg-yellow-400 text-center rounded-full text-black font-bold">
-              0
+              {items.length}
             </span>
             <ShoppingCartIcon className="h-10" />
             <p className="hidden md:inline mt-2 font-extrabold md:text-sm ">
