@@ -19,28 +19,34 @@ const Product = ({ id, title, price, description, category, image }) => {
         {category}
       </p>
 
-      <Image src={image} height={200} width={200} objectFit="contain" />
-      <h4 className="my-3">{title}</h4>
-      <div className="flex">
+      <Image
+        src={image}
+        alt=""
+        height={200}
+        width={200}
+        className="product-img"
+      />
+      <h4 className="my-2 font-semibold line-clamp-1">{title}</h4>
+      {/* <div className="flex">
         {Array(rating)
           .fill()
           .map((_, i) => (
-            <StarIcon className="h-5 text-yellow-500" />
+            <StarIcon key={i} className="h-5 text-yellow-500" />
           ))}
-      </div>
+      </div> */}
 
-      <p className="text-sx my-2 line-clamp-2">{description}</p>
+      <p className="text-sx my-1 line-clamp-2">{description}</p>
 
       <div className="mb-5">
         <Currency quantity={price} currency="INR" />
       </div>
 
-      {hasPrime && (
+      {/* {hasPrime && (
         <div className="flex items-center space-x-2 -mt-5">
           <img src="/has-prime.png" alt="" className="w-12" />
           <p className="text-xs text-gray-500">FREE Next-day Delivery</p>
         </div>
-      )}
+      )} */}
 
       <button className="mt-auto button">Add to Cart</button>
     </div>

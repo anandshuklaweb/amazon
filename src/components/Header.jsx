@@ -5,19 +5,26 @@ import {
   SearchIcon,
   ShoppingCartIcon,
 } from "@heroicons/react/outline";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const Header = () => {
+  const { data: session } = useSession();
+  // const [session] = useSession();
+
   return (
     <header>
       {/* Top Header */}
       <div className="flex items-center bg-amazon_blue flex-grow py-2">
-        <div className="flex mt-2 item-center flex-grow sm:flex-grow-0">
+        <div className="flex mt-2 mx-4 item-center flex-grow sm:flex-grow-0">
           <Image
             src="/amazon-logo.png"
-            width={150}
+            width={120}
             height={40}
-            objectFit="contain"
+            alt=""
             className="cursor-pointer"
+            style={{
+              objectFit: "contain",
+            }}
           />
         </div>
 
@@ -30,8 +37,8 @@ const Header = () => {
         </div>
 
         <div className="text-white flex items-center text-xs space-x-6 mx-6 whitespace-nowrap">
-          <div className=" link">
-            <p>Hello Anand Shukla</p>
+          <div className="link" onClick={!session ? signIn : signOut}>
+            <p>{session ? `${session.user.name}` : "Sign In"}</p>
             <p className="font-extrabold md:text-sm">Account & Lists</p>
           </div>
           <div className=" link ">
